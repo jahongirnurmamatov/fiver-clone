@@ -9,6 +9,7 @@ import messageRoute from './routes/message.route.js'
 import authRoute from './routes/auth.route.js'
 import cookieParser from 'cookie-parser';
 dotenv.config();
+
 import { connectDB } from './config/db.js';
 const PORT = 4000;
 const app = express();
@@ -24,6 +25,13 @@ app.use('/api/gig', gigRoute)
 app.use('/api/conversation', conversationRoute)
 app.use('/api/message', messageRoute)
 app.use('/api/auth', authRoute)
+
+//error handler
+app.use((err,req,res,next)=>{
+    const errorStatus = err.status||500;
+    const errorMessage = err.message || 'Something went wrong';
+    return res.status(errorStatus).send(errorMessage);
+})
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port:${PORT}`);
