@@ -26,6 +26,13 @@ app.use('/api/conversation', conversationRoute)
 app.use('/api/message', messageRoute)
 app.use('/api/auth', authRoute)
 
+//error handler
+app.use((err,req,res,next)=>{
+    const errorStatus = err.status||500;
+    const errorMessage = err.message || 'Something went wrong';
+    return res.status(errorStatus).send(errorMessage);
+})
+
 app.listen(PORT,()=>{
     console.log(`Server is running on port:${PORT}`);
 })
