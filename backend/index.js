@@ -9,6 +9,7 @@ import messageRoute from './routes/message.route.js'
 import authRoute from './routes/auth.route.js'
 import cookieParser from 'cookie-parser';
 dotenv.config();
+
 import { connectDB } from './config/db.js';
 const PORT = 4000;
 const app = express();
