@@ -32,6 +32,36 @@ top: 0;
             display: flex;
             gap: 24px;
             font-weight: 500;
+            .user{
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                cursor: pointer;
+                position: relative;
+                img{
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                .options{
+                    position: absolute;
+                    top: 50px;
+                    right: 0;
+                    padding: 20px;
+                    width: 200px;
+                    font-weight: 300;
+                    background-color: white;
+                    border-radius: 10px;
+                    border: 1px solid lightgray;
+                    flex-direction: column;
+                    display: flex;
+                    gap: 10px;
+                    color: gray;
+                    
+                }
+            }
+
             button{
                 color: white;
                 padding: 10px 20px;
