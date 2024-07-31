@@ -1,7 +1,6 @@
-import React from "react"
-import "./Register.scss"
+import './Register.scss'
 
-function Register() {
+const Register = () => {
   return (
     <div>Register</div>
   )

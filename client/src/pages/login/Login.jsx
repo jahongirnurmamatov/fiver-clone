@@ -1,7 +1,6 @@
-import React from "react"
-import "./Login.scss"
+import './Home.scss'
 
-function Login() {
+const Login = () => {
   return (
     <div>Login</div>
   )

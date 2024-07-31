@@ -3,7 +3,10 @@ import User  from '../models/user.model.js';
 import jwt from 'jsonwebtoken';
 import { errorHandler } from '../middleware/errorHandler.js';
 export const logout =async(req,res)=>{
-    
+    res.clearCookie("accessToke,",{
+        sameSite:"none",
+        secure:true,
+    }).status(200).send("User has been logged out");
 }
 export const register =async(req,res,next)=>{
     try {
@@ -22,7 +25,7 @@ export const login =async(req,res,next)=>{
     try {
         const user = await User.findOne({ username: req.body.username });
         if(!user) return next(errorHandler(404,'User not found!'));
-        const isCorrect = bcrypt.compare(req.body.password, user.password);
+        const isCorrect = await bcrypt.compare(req.body.password, user.password);
 
         console.log(isCorrect)
         if(!isCorrect) return next(errorHandler(403,"Invalid credentials"));
@@ -36,6 +39,6 @@ export const login =async(req,res,next)=>{
         }).status(200).send(info);
     } catch (error) {
         console.log(error)
-        res.status(500).send('something went wrong!');
+        next(error);
     }
 }
